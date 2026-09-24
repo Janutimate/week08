@@ -3,15 +3,11 @@ name: 00 - Terraform Validation
 on:
   push:
     branches:
-      - main
+      - week09-demo
 
 jobs:
   terraform:
     runs-on: ubuntu-latest
-
-    defaults:
-      run:
-        working-directory: terraform
 
     steps:
       - uses: actions/checkout@v4
@@ -19,7 +15,11 @@ jobs:
       - uses: hashicorp/setup-terraform@v3
 
       - name: Terraform Init
-        run: terraform init
+        run: |
+          cd terraform
+          terraform init
 
       - name: Terraform Validate
-        run: terraform validate
+        run: |
+          cd terraform
+          terraform validate
