@@ -102,6 +102,10 @@ jobs:
         run: |
           pytest -v
 
+      - name: Docker Scout CVE Scan
+        run: |
+          docker scout cves koalatech-user-service:${{ github.sha }}
+
 
   # =========================================================
   # Build and Push Docker Images
